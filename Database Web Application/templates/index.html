@@ -1,0 +1,60 @@
+{% include 'top.html' %}
+<div class="content">
+    <div class="container details">
+        <h1 class="title"> Welcome, {{ user.name }}</h1>
+        <table>
+            <tr>
+                <td> Employee ID </td>
+                <td> {{ user.empid }}</td>
+            </tr>
+            <tr>
+            <tr>
+                <td> Home Address </td>
+                <td> {{user.homeAddress }} </td>
+            </tr>
+            <tr>
+                <td> Date Of Birth </td>
+                <td> {{user.dateOfBirth }} </td>
+            </tr>
+            <tr>
+                <td> Departments </td>
+                <td>
+                {% for dept in works_in %}
+                    {{ dept }}
+                {% endfor %}
+                </td>
+            </tr>
+        </table>
+
+        {% if manager_of is not none %}
+
+        <hr>
+
+        <h3>Manager of: {{ manager_of }}</h3>
+        {% endif %}
+
+        <hr>
+
+        <h3> My Used Devices </h3>
+
+        <table class="styled">
+            <thead>
+                <tr>
+                    <th>Device ID</th>
+                    <th>Model Number</th>
+                    <th>Manufacturer</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dev in used_by %}
+                    <tr class="clickable-tr" data-href="{{ url_for('device', deviceid=dev[0]) }}">
+                        <td style="text-align: center">{{ dev[0] }}</td>
+                        <td>{{ dev[2] }}</td>
+                        <td>{{ dev[1] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% include 'bottom.html'%}

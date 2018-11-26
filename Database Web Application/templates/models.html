@@ -1,0 +1,28 @@
+{% include 'top.html' %}
+<div class="content">
+    <div class="container">
+        <h1 class="title">Models</h1>
+
+        <table class="styled">
+            <thead>
+                <tr>
+                    <th>Manufacturer</th>
+                    <th>Description</th>
+                    <th>Model Number</th>
+                    <th>Weight(g)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for model in models %}
+                    <tr>
+                        <td>{{ model[0] }}</td>
+                        <td>{{ model[1] }}</td>
+                        <td>{{ model[2] }}</td>
+                        <td>{{ model[3] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% include 'bottom.html' %}

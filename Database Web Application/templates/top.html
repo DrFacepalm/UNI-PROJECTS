@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>RandomCompany's Device Management</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pure.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/grid.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+        <script src="{{ url_for('static', filename='scripts/jquery.js') }}"></script>
+    </head>
+    <body>
+        <div class="body-container">
+            <header class="page-header">
+                <div class="container">
+                    <div class="title">
+                        <a href="/"><span class="inner"></span></a>
+                    </div>
+                    <ul class="page-nav">
+                        {% if session.logged_in %}
+                        <li><a href="{{ url_for('mydevices')}}">My Devices</a></li>
+                        <li><a href="{{ url_for('models') }}">Models</a></li>
+                        {% if session.manager is not none %}
+                        <li><a href="{{url_for('departmentmodels')}}">Manage Department</a></li>
+                        <li><a href="{{url_for('issue_device')}}">Issue Device</a></li>
+                        <li><a href="{{url_for('deviceCount')}}">Number of Devices in Department</a></li>
+                        <li><a href="{{url_for('repair_costs')}}">Number of Devices in Department</a></li>
+                        {% endif %}
+                        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </header>
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% if page.bar == True %}
+                <ul class="flashes" style="background-color: #0B0">
+                {% else %}
+                <ul class="flashes" style="background-color: #B00">
+                {% endif %}
+                {% for message in messages %}
+                  <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+              {% endif %}
+            {% endwith %}

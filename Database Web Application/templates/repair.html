@@ -1,0 +1,45 @@
+{% include 'top.html' %}
+<div class="content">
+    <div class="container details">
+        <h1 class="title">Repair {{repair_info.repair_id}}</h1>
+        <table>
+            <tr>
+                <td>Repair ID</td>
+                <td>{{repair_info.repair_id}}</td>
+            </tr>
+            <tr>
+                <td>Fault Report</td>
+                <td>{{repair_info.fault_report}}</td>
+            </tr>
+            <tr>
+                <td>Start Date</td>
+                <td>{{repair_info.start_date}}</td>
+            </tr>
+            <tr>
+                <td>End Date</td>
+                <td>{{repair_info.end_date}}</td>
+            </tr>
+            <tr>
+                <td>Cost</td>
+                <td>{{repair_info.cost}}</td>
+            </tr>
+            <tr>
+                <td>Service ABN</td>
+                <td>{{repair_info.done_by.abn}}</td>
+            </tr>
+            <tr>
+                <td>Service Name</td>
+                <td>{{repair_info.done_by.service_name}}</td>
+            </tr>
+            <tr>
+                <td>Service Email</td>
+                <td>{{repair_info.done_by.email}}</td>
+            </tr>
+            <tr class="clickable-tr" data-href="{{ url_for('device', deviceid=repair_info.done_to) }}">
+                <td>Done to Device</td>
+                <td>{{repair_info.done_to}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+{% include 'bottom.html' %}

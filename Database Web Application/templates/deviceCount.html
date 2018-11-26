@@ -1,0 +1,24 @@
+{% include 'top.html' %}
+<div class="content">
+    <div class="container">
+        <h1 class="title">Number of Devices used per Department</h1>
+
+        <table class="styled">
+            <thead>
+                <tr>
+                    <th>Department</th>
+                    <th>Number of Devices</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dept in deviceCounts %}
+                    <tr>
+                        <td>{{ dept[0] }}</td>
+                        <td>{{ dept[1] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% include 'bottom.html' %}

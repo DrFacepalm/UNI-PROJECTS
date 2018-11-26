@@ -1,0 +1,28 @@
+{% include 'top.html' %}
+<div class="content">
+    <div class="container">
+        <h1 class="title">My Issued Devices</h1>
+
+        <table class="styled">
+            <thead>
+                <tr>
+                    <th>Device ID</th>
+                    <th>Purchase Date</th>
+                    <th>Manufacturer</th>
+                    <th>Model Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for device in device_list %}
+                <tr class="clickable-tr" data-href="{{ url_for('device', deviceid=device[0])}}">
+                        <td>{{ device[0] }}</td>
+                        <td>{{ device[1] }}</td>
+                        <td>{{ device[2] }}</td>
+                        <td>{{ device[3] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% include 'bottom.html' %}

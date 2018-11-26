@@ -1,0 +1,27 @@
+{% include 'top.html' %}
+<div class="content">
+    <div class="container">
+        <h1 class="title">Employee Counts</h1>
+        <h2>Model: {{model}}</h2>
+        <h2>Manufacturer: {{manufacturer}}</h2>
+        <table class="styled">
+            <thead>
+                <tr>
+                    <th>Employee ID</th>
+                    <th>Name</th>
+                    <th>Count of Devices</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for emp in model_counts %}
+                    <tr class="clickable-tr" data-href="{{ url_for('departmentmodels', manufacturer=manufacturer, model=model, empid=emp[0], department=department)}}">
+                        <td>{{ emp[0] }}</td>
+                        <td>{{ emp[1] }}</td>
+                        <td>{{ emp[2] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% include 'bottom.html' %}

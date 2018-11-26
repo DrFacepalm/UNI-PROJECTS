@@ -1,0 +1,26 @@
+{% include 'top.html' %}
+<div class="content">
+    <div class="container">
+        <h1 class="title">Models for: {{department}}</h1>
+
+        <table class="styled">
+            <thead>
+                <tr>
+                    <th>Manufacturer</th>
+                    <th>Model Number</th>
+                    <th>Max Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for model in department_models %}
+                    <tr class="clickable-tr" data-href="{{ url_for('departmentmodels', manufacturer=model[0], model=model[1], department=department)}}">
+                        <td>{{ model[0] }}</td>
+                        <td>{{ model[1] }}</td>
+                        <td>{{ model[2] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% include 'bottom.html' %}

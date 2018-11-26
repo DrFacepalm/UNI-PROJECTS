@@ -1,0 +1,66 @@
+{% include 'top.html' %}
+<div class="content">
+    <div class="container details">
+        <h1 class="title"> Device: {{device_info.manufacturer}}-{{device_info.model_number}}</h1>
+        <table>
+            <tr>
+                <td> Device ID</td>
+                <td> {{ device_info.device_id }}</td>
+            </tr>
+            <tr>
+                <td> Serial Number </td>
+                <td> {{device_info.serial_number }} </td>
+            </tr>
+            <tr>
+                <td> Purchase Date </td>
+                <td> {{device_info.purchase_date}} </td>
+            </tr>
+            <tr>
+                <td> Purchase Cost</td>
+                <td> {{device_info.purchase_cost}} </td>
+            </tr>
+            <tr>
+                <td> Manufacturer </td>
+                <td> {{device_info.manufacturer}} </td>
+            </tr>
+            <tr class="clickable-tr" data-href="{{ url_for('devicemodel', deviceid=device_info.device_id) }}">
+                <td> Model Number </td>
+                <td> {{device_info.model_number}} </td>
+            </tr>
+            <tr>
+                <td> Issued To </td>
+                <td> {{device_info.issued_to}} </td>
+            </tr>
+        </table>
+
+        <p><a href="{{ url_for('devicemodel', deviceid=device_info.device_id) }}">Model information</a></p>
+
+        <hr>
+
+        <h3> Repairs </h3>
+
+        <table class="styled">
+            <thead>
+                <tr>
+                    <td>Repair ID</td>
+                    <td>Fault Report</td>
+                    <td>Start Date</td>
+                    <td>End Date</td>
+                    <td>Cost</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for instance in repairs %}
+                    <tr class="clickable-tr" data-href="{{ url_for('repair', repairid=instance[0]) }}">
+                        <td style="text-align: center">{{ instance[0] }}</td>
+                        <td>{{ instance[1] }}</td>
+                        <td>{{ instance[2] }}</td>
+                        <td>{{ instance[3] }}</td>
+                        <td>{{ instance[4] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% include 'bottom.html'%}
